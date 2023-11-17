@@ -33,6 +33,14 @@ const cartSlice = createSlice({
   },
 });
 
+export const getTotalCartQuantity = (state) =>
+  state.cart.cart.reduce((acc, curr) => acc + curr.quantity, 0);
+
+export const getTotalCartPrice = (state) =>
+  state.cart.cart.reduce((acc, curr) => acc + curr.totalPrice, 0);
+
+// performance issue in bigger project => reselect library
+
 export const {
   addItem,
   deleteItem,
