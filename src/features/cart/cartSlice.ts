@@ -13,7 +13,7 @@ const cartSlice = createSlice({
     },
     deleteItem(state, action) {
       // payload = pizzaId
-      state.cart.filter((item) => item.pizzaId !== action.payload);
+      state.cart = state.cart.filter((item) => item.pizzaId !== action.payload);
     },
     increaseItemQuantity(state, action) {
       // payload = pizzaId
@@ -40,6 +40,8 @@ export const getTotalCartPrice = (state) =>
   state.cart.cart.reduce((acc, curr) => acc + curr.totalPrice, 0);
 
 export const getCart = (state) => state.cart.cart;
+export const getCurrentQuantityById = (state, id) =>
+  state.cart.cart.find((item) => item.pizzaId === id)?.quantity ?? 0;
 
 // performance issue in bigger project => reselect library
 
