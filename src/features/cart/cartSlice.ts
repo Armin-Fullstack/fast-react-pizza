@@ -39,6 +39,8 @@ export const getTotalCartQuantity = (state) =>
 export const getTotalCartPrice = (state) =>
   state.cart.cart.reduce((acc, curr) => acc + curr.totalPrice, 0);
 
+export const getCart = (state) => state.cart.cart;
+
 // performance issue in bigger project => reselect library
 
 export const {
