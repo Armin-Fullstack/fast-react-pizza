@@ -6,7 +6,6 @@ export default function DeleteItem({ pizzaId }) {
   const dispatch = useDispatch();
 
   function handleDeleteItem() {
-    console.log("delete");
     dispatch(deleteItem(pizzaId));
   }
   return (
