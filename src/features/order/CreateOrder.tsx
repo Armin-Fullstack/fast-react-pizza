@@ -1,8 +1,8 @@
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
 import Button from "../../ui/Button";
-import { useSelector } from "react-redux";
-import { selectUserName } from "../user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAddress, selectUserName } from "../user/userSlice";
 import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
 import EmptyCart from "../cart/EmptyCart";
 import store from "../../app/store";
@@ -25,12 +25,13 @@ function CreateOrder() {
   const isSubmitting = navigation.state === "submitting";
   const formError = useActionData();
   const userName = useSelector(selectUserName);
+  const dispatch = useDispatch();
 
   if (!cart.length) return <EmptyCart />;
   return (
     <div className="px-4 py-6">
       <h2 className="mb-8 text-xl font-semibold">Ready to order? Let's go!</h2>
-
+      <button onClick={() => dispatch(fetchAddress())}>get position</button>
       <Form method="POST">
         <div className="order-input-box">
           <label className="sm:basis-40">First Name</label>
