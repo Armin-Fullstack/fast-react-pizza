@@ -60,11 +60,13 @@ const userSlice = createSlice({
       })
       .addCase(fetchAddress.rejected, (state, action) => {
         state.status = "error";
-        state.error = action.error.message;
+        state.error =
+          "There was a problem getting your address. Make sure to fill out the field!";
       });
   },
 });
 
 export const selectUserName = (state) => state.user.userName;
+export const getUSer = (state) => state.user;
 export const { updateName } = userSlice.actions;
 export default userSlice.reducer;
